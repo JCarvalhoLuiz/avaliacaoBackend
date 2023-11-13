@@ -1,0 +1,18 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {  // O "client" é gerado para ser instanciado para as requisições do servidor
+  provider = "prisma-client-js"
+}
+
+datasource db {  // Configuração do banco de dados PostgreeSQL, obtendo-se usuário e senha declarados no arquivo ".env"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model AvaliacaoPrisma {  // Módulo utilizado denominado "AvaliacaoPrisma"
+  id    Int     @id @default(autoincrement())  // "id" do tipo Int, e autoincremental
+  nome String  // "nome" do tipo "String"
+  email String  @unique  // "email" do tipo String, e único
+}
